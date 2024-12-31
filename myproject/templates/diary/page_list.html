@@ -1,0 +1,15 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+
+<ul>
+    <p>　　　　作成日時　　　 　　　 　日付　　　　　</p>
+    {% for page in page_list %}
+        <li>{{ page.created_at }} | {{ page.page_date }}:
+            <a href="{% url 'diary:page_detail' page.id %}">{{ page.title }}</a>
+        </li>
+    {% empty %}
+        <div>日記のページが1つもありません</div>
+    {% endfor %}
+</ul>
+
+{% endblock %}

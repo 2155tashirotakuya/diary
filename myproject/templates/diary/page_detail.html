@@ -1,0 +1,21 @@
+{% extends "base/diary_base.html" %}
+{% block body %}
+
+<h2>{{ page.title }}</h2>
+<div>{{ page.page_date }}</div>
+<!-- linebreaksbr をいれると改行も反映させる -->
+<div>{{ page.body | linebreaksbr }}</div>
+{% if page.picture %}
+    <img src="{{ page.picture.url }}">
+{% endif %}
+<br>
+<button onclick="location.href='{% url 'diary:page_update' page.id %}'" class="button">編集</button>
+<button onclick="location.href='{% url 'diary:page_delete' page.id %}'" class="button">削除</button>
+
+<!--
+ボタンにするために無効化する
+<a href="{% url 'diary:page_update' page.id  %}" >編集</a>
+<a href="{% url 'diary:page_delete' page.id  %}" >削除</a>
+-->
+
+{% endblock %}
